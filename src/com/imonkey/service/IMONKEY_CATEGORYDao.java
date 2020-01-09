@@ -127,4 +127,36 @@ public class IMONKEY_CATEGORYDao {
 		
 		return count;
 	}
+
+	public static ArrayList<LMONKEY_CATEGORY> selectCat(String flag){
+		ArrayList<LMONKEY_CATEGORY> list=new ArrayList<LMONKEY_CATEGORY>();
+		ResultSet rs=null;
+		Connection conn= Basedao.getconn();
+		PreparedStatement ps=null;
+		try {
+			String sql=null;
+			if(flag!=null && flag.equals("father")){
+				sql="SELECT * from imonkey_category where CATE_PARENT_ID=0";
+			}else{
+				sql="SELECT * from imonkey_category where CATE_PARENT_ID!=0";
+			}
+			
+			
+			
+			 ps=conn.prepareStatement(sql);	
+			 
+			 rs=ps.executeQuery();
+			while(rs.next()){
+				LMONKEY_CATEGORY category=new LMONKEY_CATEGORY(rs.getInt(1),rs.getString(2),rs.getInt(3));
+				list.add(category);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			Basedao.closeall(rs, ps, conn);
+		}
+		return list;
+		
+	}
 }
