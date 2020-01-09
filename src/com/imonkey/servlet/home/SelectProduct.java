@@ -36,7 +36,7 @@ public class SelectProduct extends HttpServlet {
 		if(category.getCATE_PARENT_ID()!=0){
 			LMONKEY_CATEGORY fcategory=IMONKEY_CATEGORYDao.selectByid(Integer.toString(category.getCATE_PARENT_ID()));
 			request.setAttribute("fcategory", fcategory);
-			System.out.println(fcategory);
+			//System.out.println(fcategory);
 		}
 		//System.out.println(flist);System.out.println(clist);
 		request.getRequestDispatcher("proList.jsp").forward(request, response);
