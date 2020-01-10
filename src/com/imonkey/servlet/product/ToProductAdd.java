@@ -15,10 +15,10 @@ import com.imonkey.service.IMONKEY_CATEGORYDao;
 import com.imonkey.service.IMONKEY_PRODUCTDao;
 
 /**
- * Servlet implementation class ProductSelect
+ * Servlet implementation class ToProductAdd
  */
-@WebServlet("/manage/admin_productselect")
-public class ProductSelect extends HttpServlet {
+@WebServlet("/manage/admin_toproductadd")
+public class ToProductAdd extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     
@@ -29,14 +29,11 @@ public class ProductSelect extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		ArrayList<LMONKEY_PRODUCT> list=IMONKEY_PRODUCTDao.selectAll();
 		ArrayList<LMONKEY_CATEGORY> flist=IMONKEY_CATEGORYDao.selectCat("father");
 		ArrayList<LMONKEY_CATEGORY> clist=IMONKEY_CATEGORYDao.selectCat("child");
-		request.setAttribute("productlist", list);
-		request.setAttribute("flist", flist);
-		request.setAttribute("clist", clist);
-		System.out.print(list);
-		request.getRequestDispatcher("admin_product.jsp").forward(request, response);
+		request.setAttribute("father", flist);
+		request.setAttribute("child", clist);
+		request.getRequestDispatcher("admin_productadd.jsp").forward(request, response);
 	}
 
 	

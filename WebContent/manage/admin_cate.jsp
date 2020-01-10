@@ -9,7 +9,7 @@
         </div>
        
         <div class="result-wrap">
-            <form action="/MonkeyShop/manage/admin_douserdelete" name="myform" id="myform" method="post">
+            <form action="#" name="myform" id="myform" method="post">
                 <div class="result-title">
                     <div class="result-list">
                         <a href="/MonkeyShop/manage/admin_tocateadd"><i class="icon-font"></i>新增分类</a>
@@ -72,6 +72,6 @@
         </div>
     </div>
     <!--/main-->
-
+</div>
 </body>
 </html>

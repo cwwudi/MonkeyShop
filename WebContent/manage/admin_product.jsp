@@ -9,51 +9,59 @@
         </div>
        
         <div class="result-wrap">
-            <form action="/MonkeyShop/manage/admin_douserdelete" name="myform" id="myform" method="post">
+            <form action="#" name="myform" id="myform" method="post">
                 <div class="result-title">
                     <div class="result-list">
-                        <a href="/MonkeyShop/manage/admin_tocateadd"><i class="icon-font"></i>新增分类</a>
+                        <a href="/MonkeyShop/manage/admin_toproductadd"><i class="icon-font"></i>新增产品</a>
                        
                        <!--   <a id="updateOrd" href="javascript:void(0)"><i class="icon-font"></i>更新排序</a>-->
                     </div>
                 </div>
                 <div class="result-content">
-                    <table class="result-tab" width="40%">
+                    <table class="result-tab" width="100%">
                         <tr>
                           
                             
                             <th>ID</th>
-                            <th>分类名称</th>
+                            <th>产品名称</th>
+                            <th>产品描述</th>
+                            <th>产品价格</th>
+                            <th>库存数量</th>
+                            <th>所属父类</th>
+                            <th>所属分类</th>
+                            <th>文件名称</th>                                   
                             <th>操作</th>
                           
                         </tr>
                         
-                        <c:forEach var="c" items="${categorylist}">
-                       	<c:if test="${c.CATE_PARENT_ID==0}">
+                        <c:forEach var="p" items="${productlist}">
+                       
                         <tr>
                         
-                        	<td>${c.CATE_ID}</td>
-                        	<td>|-${c.CATE_NAME}</td>
-
+                        	<td>${p.PRODUCT_ID}</td>
+                        	<td>${p.PRODUCT_NAME}</td>
+							<td>${p.PRODUCT_DESCRIPTION}</td>
+							<td>${p.PRODUCT_PRICE}</td>
+							<td>${p.PRODUCT_STOCK}</td>
+							<c:forEach var="f" items="${flist}">
+							<c:if test="${f.CATE_ID==p.PRODUCT_FCATE}">
+							<td>${f.CATE_NAME}</td>
+							</c:if>
+							</c:forEach>
+							<c:forEach var="c" items="${clist}">
+							<c:if test="${c.CATE_ID==p.PRODUCT_CCATE}">
+							<td>${c.CATE_NAME}</td>
+							</c:if>
+							</c:forEach>
+							
+							<td>${p.PRODUCT_FILENAME}</td>
                             <td>
-                                <a class="link-update" href="admin_tocateupdate?id=${c.CATE_ID }">修改</a>
-                                &nbsp;&nbsp;&nbsp;<a class="link-del" href="javascript:Delete('确定要删除分类[${c.CATE_NAME}]?','admin_docatedelete?id=${c.CATE_ID }')">删除</a> 
+                                <a class="link-update" href="admin_tocateupdate?id=${p.PRODUCT_ID }">修改</a>
+                                &nbsp;&nbsp;&nbsp;<a class="link-del" href="javascript:Delete('确定要删除分类[${p.PRODUCT_ID}]?','admin_docatedelete?id=${c.CATE_ID }')">删除</a> 
                             </td>
                         </tr>
-                         <c:forEach var="zc" items="${categorylist}">
-                        <c:if test="${zc.CATE_PARENT_ID==c.CATE_ID}"> 
-                        <tr>
-                        	<td>${zc.CATE_ID}</td>
-                        	<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-${zc.CATE_NAME}</td>
-
-                            <td>
-                                <a class="link-update" href="admin_tocateupdate?id=${zc.CATE_ID }">修改</a>
-                                &nbsp;&nbsp;&nbsp;<a class="link-del" href="javascript:Delete('确定要删除分类[${zc.CATE_NAME}]?','admin_docatedelete?id=${zc.CATE_ID }')">删除</a> 
-                            </td>
-                             </tr>
-                        </c:if> 
-                        </c:forEach>
-                      </c:if>
+                        
+                   
                       </c:forEach>
                       
                       <script>
