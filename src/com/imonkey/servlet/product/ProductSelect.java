@@ -35,7 +35,7 @@ public class ProductSelect extends HttpServlet {
 		request.setAttribute("productlist", list);
 		request.setAttribute("flist", flist);
 		request.setAttribute("clist", clist);
-		System.out.print(list);
+		//System.out.print(list);
 		request.getRequestDispatcher("admin_product.jsp").forward(request, response);
 	}
 

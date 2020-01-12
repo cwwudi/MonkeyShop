@@ -17,28 +17,20 @@
                                 <th><i class="require-red">*</i>上级分类：</th>
                                 <td>
                                    <select class="common-text required" name="parentId">
-                                   <option value="0" selected="selected">根分类</option>
+                                 
                                    <c:forEach var="f" items="${father}">
                                  
-                                     <option value="${f.CATE_ID }">${f.CATE_NAME }</option>
-                                    
+                                     <option disabled="disabled"">|-${f.CATE_NAME }</option>
+                                      <c:forEach var="c" items="${child}">
+                                 	<c:if test="${c.CATE_PARENT_ID==f.CATE_ID }">
+                                     <option value="${c.CATE_ID-f.CATE_ID }"> &nbsp;&nbsp;&nbsp;||-${c.CATE_NAME }</option>
+                                    </c:if>
+                                   </c:forEach>
                                    </c:forEach>
                                    </select>
                                 </td>
                             </tr>
-                             <tr>
-                                <th><i class="require-red">*</i>子分类：</th>
-                                <td>
-                                   <select class="common-text required" name="childId">
-                                  
-                                   <c:forEach var="c" items="${child}">
-                                 
-                                     <option value="${c.CATE_ID }">${c.CATE_NAME }</option>
-                                    
-                                   </c:forEach>
-                                   </select>
-                                </td>
-                            </tr>
+                            
                              <tr>
                                 <th><i class="require-red">*</i>图书名称：</th>
                                 <td>
@@ -61,6 +53,12 @@
                                 <th><i class="require-red">*</i>库存数量：</th>
                                 <td>
                                     <input class="common-text required" id="title" name="cateName" size="50" value="" type="text">
+                                </td>
+                            </tr>
+                             <tr>
+                                <th><i class="require-red">*</i>文&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;件：</th>
+                                <td>
+                                    <input class="common-text required" id="title" name="cateName" size="50" value="" type="file">
                                 </td>
                             </tr>
                             <tr>
