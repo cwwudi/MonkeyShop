@@ -10,7 +10,7 @@
         </div>
         <div class="result-wrap">
             <div class="result-content">
-                <form action="/MonkeyShop/manage/admind_doproductadd" method="post" id="myform" name="myform">
+                <form action="/MonkeyShop/manage/admin_doproductadd" enctype="multipart/form-data" method="post" id="myform" name="myform">
                     <table class="insert-tab" width="100%">
                         <tbody>
                             <tr>
@@ -34,31 +34,31 @@
                              <tr>
                                 <th><i class="require-red">*</i>图书名称：</th>
                                 <td>
-                                    <input class="common-text required" id="title" name="cateName" size="50" value="" type="text">
+                                    <input class="common-text required" id="title" name="name" size="50" value="" type="text">
                                 </td>
                             </tr>
                               <tr>
                                 <th><i class="require-red">*</i>图书描述：</th>
                                 <td>
-                                    <input class="common-text required" id="title" name="cateName" size="50" value="" type="text">
+                                    <input class="common-text required" id="title" name="description" size="50" value="" type="text">
                                 </td>
                             </tr>
                               <tr>
                                 <th><i class="require-red">*</i>图书价格：</th>
                                 <td>
-                                    <input class="common-text required" id="title" name="cateName" size="50" value="" type="text">
+                                    <input class="common-text required" id="title" name="price" size="50" value="" type="text">
                                 </td>
                             </tr>
                              <tr>
-                                <th><i class="require-red">*</i>库存数量：</th>
+                                <th><i class="require-red">*</i>初始库存数量：</th>
                                 <td>
-                                    <input class="common-text required" id="title" name="cateName" size="50" value="" type="text">
+                                    <input class="common-text required" id="title" name="stock" size="50" value="" type="text">
                                 </td>
                             </tr>
                              <tr>
                                 <th><i class="require-red">*</i>文&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;件：</th>
                                 <td>
-                                    <input class="common-text required" id="title" name="cateName" size="50" value="" type="file">
+                                    <input class="common-text required" id="title" name="fileName" size="50" value="" type="file">
                                 </td>
                             </tr>
                             <tr>
