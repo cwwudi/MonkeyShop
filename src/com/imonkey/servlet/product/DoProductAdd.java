@@ -29,7 +29,7 @@ public class DoProductAdd extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	@SuppressWarnings("deprecation")
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		 request.setCharacterEncoding("utf-8");
@@ -70,7 +70,7 @@ public class DoProductAdd extends HttpServlet {
 						byte[] buffer = new byte[1024];
 						int len = 0;
 	 
-						fileName = "e:\\files\\" + fileName;//文件最终上传的位置
+						fileName = "..\\images\\" + fileName;//文件最终上传的位置
 						System.out.println(fileName);
 						OutputStream out = new FileOutputStream(fileName);
 	 
