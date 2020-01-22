@@ -18,18 +18,13 @@
                     </div>
                 </div>
                 <div class="result-content">
-                    <table class="result-tab" width="100%">
+                    <table class="result-tab" width="60%">
                         <tr>
                           
                             
                             <th>ID</th>
                             <th>产品名称</th>
-                            <th>产品描述</th>
-                            <th>产品价格</th>
-                            <th>库存数量</th>
-                            <th>所属父类</th>
-                            <th>所属分类</th>
-                            <th>文件名称</th>                                   
+                                                             
                             <th>操作</th>
                           
                         </tr>
@@ -39,25 +34,11 @@
                         <tr>
                         
                         	<td>${p.PRODUCT_ID}</td>
-                        	<td>${p.PRODUCT_NAME}</td>
-							<td>${p.PRODUCT_DESCRIPTION}</td>
-							<td>${p.PRODUCT_PRICE}</td>
-							<td>${p.PRODUCT_STOCK}</td>
-							<c:forEach var="f" items="${flist}">
-							<c:if test="${f.CATE_ID==p.PRODUCT_FCATE}">
-							<td>${f.CATE_NAME}</td>
-							</c:if>
-							</c:forEach>
-							<c:forEach var="c" items="${clist}">
-							<c:if test="${c.CATE_ID==p.PRODUCT_CCATE}">
-							<td>${c.CATE_NAME}</td>
-							</c:if>
-							</c:forEach>
-							
-							<td>${p.PRODUCT_FILENAME}</td>
+                        	<td><img alt="" src="/upload/${p.PRODUCT_FILENAME}"  height="100" width="80">${p.PRODUCT_NAME}</td>
+						
                             <td>
-                                <a class="link-update" href="admin_tocateupdate?id=${p.PRODUCT_ID }">修改</a>
-                                &nbsp;&nbsp;&nbsp;<a class="link-del" href="javascript:Delete('确定要删除分类[${p.PRODUCT_ID}]?','admin_docatedelete?id=${c.CATE_ID }')">删除</a> 
+                                <a class="link-update" href="admin_toproductmodify?id=${p.PRODUCT_ID }">修改</a>
+                                &nbsp;&nbsp;&nbsp;<a class="link-del" href="javascript:Delete('确定要删除产品[${p.PRODUCT_NAME}]?','admin_doproductdelete?id=${p.PRODUCT_ID }')">删除</a> 
                             </td>
                         </tr>
                         

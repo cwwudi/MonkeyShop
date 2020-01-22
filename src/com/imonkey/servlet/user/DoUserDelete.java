@@ -43,7 +43,7 @@ public class DoUserDelete extends HttpServlet {
 		}else{
 			PrintWriter out=response.getWriter();
 			out.write("<script>");
-			out.write("alert('删除失败！')");
+			out.write("alert('删除失败！');");
 			out.write("location.herf='manage/douserselect?cp="+cpage+"'");
 			out.write("</script>");
 			

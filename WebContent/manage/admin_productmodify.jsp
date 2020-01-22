@@ -10,9 +10,13 @@
         </div>
         <div class="result-wrap">
             <div class="result-content">
-                <form action="/MonkeyShop/manage/admin_doproductadd" enctype="multipart/form-data" method="post" id="myform" name="myform">
+                <form action="/MonkeyShop/manage/admin_doproductmodify" enctype="multipart/form-data" method="post" id="myform" name="myform">
                     <table class="insert-tab" width="100%">
                         <tbody>
+                          <tr  >
+                          <th>ID</th>
+                          <td><input type="text" name="id" value="${product.PRODUCT_ID }"></td>
+                          </tr>
                             <tr>
                                 <th><i class="require-red">*</i>上级分类：</th>
                                 <td>
@@ -23,7 +27,12 @@
                                      <option disabled="disabled">|-${f.CATE_NAME }</option>
                                       <c:forEach var="c" items="${child}">
                                  	<c:if test="${c.CATE_PARENT_ID==f.CATE_ID }">
-                                     <option value="${c.CATE_ID }-${c.CATE_PARENT_ID }"> &nbsp;&nbsp;&nbsp;||-${c.CATE_NAME }</option>
+                                 	<c:if test="${c.CATE_ID==product.PRODUCT_CCATE }">
+                                     <option selected="selected" value="${c.CATE_ID }-${c.CATE_PARENT_ID }"> &nbsp;&nbsp;&nbsp;||-${c.CATE_NAME }</option>
+                                     </c:if>
+                                     <c:if test="${c.CATE_ID!=product.PRODUCT_CCATE }">
+                                     <option  value="${c.CATE_ID }-${c.CATE_PARENT_ID }"> &nbsp;&nbsp;&nbsp;||-${c.CATE_NAME }</option>
+                                     </c:if>
                                     </c:if>
                                    </c:forEach>
                                    </c:forEach>
@@ -34,31 +43,33 @@
                              <tr>
                                 <th><i class="require-red">*</i>图书名称：</th>
                                 <td>
-                                    <input class="common-text required" id="title" name="name" size="50" value="" type="text" required="required" >
+                                    <input value=${product.PRODUCT_NAME } class="common-text required" id="title" name="name" size="50"  type="text" required="required" >
                                 </td>
                             </tr>
                               <tr>
                                 <th><i class="require-red">*</i>图书描述：</th>
                                 <td>
-                                    <input class="common-text required" id="title" name="description" size="50" value="" type="text">
+                                    <input value=${product.PRODUCT_DESCRIPTION } class="common-text required" id="title" name="description" size="50"  type="text">
                                 </td>
                             </tr>
                               <tr>
                                 <th><i class="require-red">*</i>图书价格：</th>
                                 <td>
-                                    <input class="common-text required" id="title" name="price" size="50" value="" type="text" required="required">
+                                    <input value=${product.PRODUCT_PRICE } class="common-text required" id="title" name="price" size="50"  type="text" required="required">
                                 </td>
                             </tr>
                              <tr>
-                                <th><i class="require-red">*</i>初始库存数量：</th>
+                                <th><i class="require-red">*</i>库存数量：</th>
                                 <td>
-                                    <input class="common-text required" id="title" name="stock" size="50" value="" type="text" required="required">
+                                    <input value=${product.PRODUCT_STOCK } class="common-text required" id="title" name="stock" size="50"  type="text" required="required">
                                 </td>
                             </tr>
                              <tr>
                                 <th><i class="require-red">*</i>文&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;件：</th>
                                 <td>
-                                    <input class="common-text required" id="title" name="fileName" size="50" value="" type="file" required="required">
+                                   <img alt="" src="/upload/${product.PRODUCT_FILENAME}"  height="100" width="80">
+                                    <input class="common-text required" id="title" name="fileName" size="50"  type="file" >
+                                    <input type="hidden" name="fm" value="${product.PRODUCT_FILENAME }">
                                 </td>
                             </tr>
                             <tr>

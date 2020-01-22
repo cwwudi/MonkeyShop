@@ -7,8 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.imonkey.dao.Basedao;
-
 import com.imonkey.entity.LMONKEY_PRODUCT;
+import com.sun.org.apache.regexp.internal.recompile;
 
 public class IMONKEY_PRODUCTDao {
 	/**
@@ -63,4 +63,87 @@ public class IMONKEY_PRODUCTDao {
 		return p;
 	}
 
+	public static int insert(LMONKEY_PRODUCT p){
+		int count=0;
+		Connection conn= Basedao.getconn();
+		PreparedStatement ps=null;
+		
+		String sql="insert into imonkey_product values(?,?,?,?,?,?,?,?)";
+		try {
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, p.getPRODUCT_ID());
+			ps.setString(2, p.getPRODUCT_NAME());
+			ps.setString(3, p.getPRODUCT_DESCRIPTION());
+			ps.setFloat(4, p.getPRODUCT_PRICE());
+			ps.setFloat(5, p.getPRODUCT_STOCK());
+			ps.setInt(6, p.getPRODUCT_FCATE());
+			ps.setInt(7, p.getPRODUCT_CCATE());
+			ps.setString(8, p.getPRODUCT_FILENAME());
+			count =ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			Basedao.closeall(null, ps, conn);
+		}
+		
+		
+		
+		
+		return count;
+	}
+
+	public static int deleteById(int id){
+		int count=0;
+		Connection conn=Basedao.getconn();
+		PreparedStatement ps=null;
+		
+		try {
+			String sql = "delete from  imonkey_product where PRODUCT_ID=?";
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, id);
+			count=ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			Basedao.closeall(null, ps, conn);
+		}
+		return count;
+		
+		
+	}
+
+
+	public static int updateById(LMONKEY_PRODUCT p){
+		int count=0;
+		Connection conn=Basedao.getconn();
+		PreparedStatement ps=null;
+		
+		try {
+			String sql="update imonkey_product set PRODUCT_NAME=?,PRODUCT_DESCRIPTION=?,PRODUCT_PRICE=?,"
+					+ "PRODUCT_STOCK=?,PRODUCT_FCATE=?,PRODUCT_CCATE=?,PRODUCT_FILENAME=? where PRODUCT_ID=?";
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, p.getPRODUCT_NAME());
+			ps.setString(2, p.getPRODUCT_DESCRIPTION());
+			ps.setFloat(3, p.getPRODUCT_PRICE());
+			ps.setInt(4, p.getPRODUCT_STOCK());
+			ps.setInt(5, p.getPRODUCT_FCATE());
+			ps.setInt(6, p.getPRODUCT_CCATE());
+			ps.setString(7, p.getPRODUCT_FILENAME());
+			ps.setInt(8, p.getPRODUCT_ID());
+			count=ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			Basedao.closeall(null, ps, conn);
+		}
+		
+		
+		
+		
+		
+		return count;
+	}
 }
