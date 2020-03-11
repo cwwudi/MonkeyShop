@@ -63,7 +63,7 @@ public class DoProductModify extends HttpServlet {
 					String name = item.getFieldName();
 					String value = item.getString("utf-8");
 					hm.put(name, value);
-					System.out.println(name + ": " + value);
+					//System.out.println(name + ": " + value);
 					
 					
 				}
@@ -75,8 +75,8 @@ public class DoProductModify extends HttpServlet {
 					String hz=strArry[strArry.length-1];
 					fm=new Date().getTime()+"."+hz;
 					long sizeInBytes = item.getSize();
-					System.out.println("filename="+fileName);
-					System.out.println("sizeInBytes="+sizeInBytes);
+					//System.out.println("filename="+fileName);
+					//System.out.println("sizeInBytes="+sizeInBytes);
  
 					InputStream in = item.getInputStream();
 					byte[] buffer = new byte[1024];
@@ -84,8 +84,8 @@ public class DoProductModify extends HttpServlet {
 					
 					fileName = "D:\\images\\" + fm;//文件最终上传的位置
 					
-					System.out.println(fileName);
-					System.out.println();
+					//System.out.println(fileName);
+					//System.out.println();
 					OutputStream out = new FileOutputStream(fileName);
 					
 					while ((len = in.read(buffer)) != -1) {
